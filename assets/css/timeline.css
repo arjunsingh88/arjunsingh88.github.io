@@ -79,6 +79,7 @@ h2 {
   font-weight: 600;
   color: #ffffff;
   letter-spacing: 1.5px;
+  justify-content: center;
 }
 .timeline__event__content {
   padding: 20px;
