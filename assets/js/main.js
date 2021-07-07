@@ -3,6 +3,39 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
+var contactForm = document.querySelector('#contact-form'),
+	 inputName = contactForm.querySelector('[name="name"]'),
+	 sendButton = contactForm.querySelector('#send-button');
+
+	 sendButton.addEventListener('click', function(event){
+		 event.preventDefault(); // prevent the form to do the post.
+
+		 sendButton.value = 'Sending..';
+
+		 var xhr = new XMLHttpRequest();
+		 xhr.open('POST', 'https://formspree.io/f/xpzkldkp', true);
+		 xhr.setRequestHeader("Accept", "application/json");
+		 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+
+		 xhr.onloadend = function (res) {
+			 if (res.target.status === 200){
+
+				 sendButton.value = 'Message sent!';
+
+			 } else {
+
+				 sendButton.value = 'Error';
+			 }
+		 }
+
+
+
+
+		 xhr.send("name=" + inputName.value);
+	 });
+
+
 
 (function($) {
 
